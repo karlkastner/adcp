@@ -1,0 +1,99 @@
+
+		%file = struct('n',[],'id',{});	
+		% S_a_f : (nr,nt) : filtered backscatter
+		%S_a_f;
+		% TODO rename
+
+
+		%[Dt Ds R R_]               = calc_bin_range_STATIC(binsize, blnk, nbins, lngthtranspulse, distmidbin1, d_transducer, beamangle_rad);
+%		[tdtemperature_C current_A, voltage_V power_W] = convert_raw_ADC_STATIC(obj,ADC);
+		%[heading pitch roll beamangle_rad]    = convert_raw_attitude_angles_STATIC(heading, pitch, roll, upward);
+		% TODO order alpahbetically
+                %[lngthtranspulse distmidbin1 binsize nbins blnk] = convert_raw_binprops_STATIC( ...
+		%	lngthranspulse_raw, distmidbin1_raw, binsize_raw, nbins_raw, blnk_raw);
+		%[btrange btn]              = convert_raw_btrange_STATIC(btrange);
+		%[pressure_bar idepth_m]    = convert_raw_pressure_STATIC(pressure_raw);
+
+%		[X Y]                      = filter_coordinates_STATIC(time, X, Y);
+
+%		function obj = calc_bin_range(obj)
+%			[obj.Dt, obj.Ds, obj.R] = obj.calc_bin_range_STATIC( ...
+%			obj.binsize, obj.blnk, obj.nbins, obj.lngthtranspulse, ...
+%			obj.distmidbin1, obj.d_transducer, obj.beamangle_rad);
+%		end
+
+%		function obj = convert_raw_ADC(obj)
+%			[obj.tdtemperature_C, obj.current_A, obj.voltage_V, obj.power_W] ...
+%			= obj.convert_raw_ADC_STATIC(obj,obj.dat.ADC);
+%		end
+%		function obj = convert_raw_attitude_angles(obj,varargin)
+%			[obj.heading_rad, obj.pitch_rad, obj.roll_rad, obj.beamangle_rad] ...
+%			= obj.convert_raw_attitude_angles_STATIC( ...
+%			obj.dat.heading, obj.dat.pitch, obj.dat.roll, obj.dat.HADCPbeamangle, varargin{:});
+%		end
+%		function obj = convert_raw_binprops(obj)
+%			[obj.lngthtranspulse, obj.distmidbin1, obj.binsize, obj.nbins, obj.blnk] = ...
+%			obj.convert_raw_binprops_STATIC( obj.dat.lngthtranspulse, ...
+%			obj.dat.distmidbin1, obj.dat.binsize, obj.dat.nbins, obj.dat.blnk);
+%		end
+		%function obj = convert_raw_temperature(obj)
+		%	obj.temperature_K = obj.convert_raw_temperature_STATIC(obj.dat.temperature);
+		%end
+		%function obj = filter_coordinates(obj)
+		%	[X Y] = filter_coordinates_STATIC(obj.time, X, Y);
+		%end
+		function obj = convert_raw_pressure(obj)
+			[obj.pressure_bar, obj.idepth_m] = obj.convert_raw_pressure_STATIC(obj.dat.pressure);
+		end
+
+%		obj.convert_raw_ADC();
+%		obj.convert_raw_attitude_angles();
+%		obj.convert_raw_binprops();
+		%obj.nens = size(obj.dat.VEL,2);
+%		obj.convert_raw_btrange();
+
+%		obj.convert_raw_pressure();
+%		obj.convert_raw_temperature();
+	% echo intensity
+%	function E = E(obj)
+%		E    = single(obj.dat.ECHO);
+%	end
+		% r0 : (1,1) : along beam distance towards first cell (m)
+%		r0;
+		% d0 : (1,1) : depth projected distance to first cell (m)
+%		d0;
+		% distance from instrument to the cell centres along the beam [m]
+		% R   : (nr,1) : along beam distance to the nth-cell (radius) (m)
+		%R
+		% depth below transducer of cell centre
+		% = distance from instrument to the cell centres projected to the vertical
+		% D   : (nr,1)  : depth projected distance to the nth-cell (depth) (m)
+		%Dt
+
+		% TODO this should not be here
+%		ldx;
+
+		% beta_f : (nr,nt) : filtered backscatter in arithmetic space
+		%beta_f;
+		% I : (nr,nt) : intergral of beta
+		% TODO rename
+		Ibeta;
+		% I_f : (nr,nt) : filtered integral of beta
+		%I_f;
+		% I_f_1 (nc,1) : arithmetic backscatter and integral at virtual reference depth for each calibration sample
+		%beta_f_1;
+		%I_f_1;
+		% I_f_2 (nc,1) : arithmetic backscatter and integrap at depth of the calibration seample at actual sample depth
+		%beta_f_2;
+		%I_f_2;
+		% sbeta (nr,1) : estimated noise in the backscatter
+		sbeta;
+		% sI (nr,1) : estimated noise in the backscatter integral
+		sI;
+
+		dt_max_gap = 10;
+		% TODO use string
+		%HADCP  = 1;
+		%VADCP  = 2;
+		%SPADCP = 3;
+

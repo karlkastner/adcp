@@ -1,0 +1,20 @@
+adcp : processing of Acoustic Doppler Current Profiler (ADCP) data
+
+Processing in 3 Levels:
+
+Level 0 : Read in of raw-data (externally provided by ADCPtools, Vermeulen et al.)
+
+Level 1 : VADCP, HADCP, SPADCP
+	- convert raw data to CI units (m,s,kg)
+	- transform velocities to arbitrary coordinate references
+	- depth averaging and integration
+	- fit velocity profiles
+	- convert backscatter to suspended sediment concentration
+
+Level 2 : CrossSection
+	- interpolate and integrate for cross sections
+
+Instruction:
+	see and run saggau/sanggau_process_discharge for a working example
+	to process VADCP discharge at a non-tidal station
+

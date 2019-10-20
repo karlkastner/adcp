@@ -1,0 +1,32 @@
+	% regression matrix
+	if (0)
+	A = [bs0];
+	np = 1;
+
+	% column for attenuation
+	if (obj.withattenuation)
+		np = np+1;
+		A(:,np) = -c.*Ibs0;
+	end
+	
+	% column for attenuation
+	if (obj.withbgconcentration)
+		np = np+1;
+		A(:,np) = 1;
+	end
+
+	% fit initial guess
+	param = A \ c;
+
+	if (obj.withbgattenuation)
+		np        = np+1;
+		param(np) = 0.0;
+	end
+	end
+
+	if (nargin()<7)
+		param = [1e6,0,0,0];
+	else
+		param = param0;
+	end
+
