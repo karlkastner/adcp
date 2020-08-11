@@ -69,6 +69,7 @@ function [as,asnu,ass,X,chi] = attenuation_coefficient(d_mm,f,M,mode,varargin)
 	case {'thorne-meral-2008'}
 		% thorne 2008 eq 9
 		% hanes 2012
+		% scattering cross-section
 		X   = ( 0.29*chi.^4 )./(0.95 + 1.28*chi.^2 + 0.25*chi.^4);
 		%ass = 1.5./D.*M/rhos.*X;
 	case {'betterridge-thorne-2008'}

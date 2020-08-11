@@ -18,10 +18,10 @@ function [val_tn, obj] = var_tn(obj,fieldname,t,N)
 		case {'n','nz'}
 			error('not available');
 		case {'tn','tnz'}
-			nn = length(N);
-			nt = length(t);
-			NN  = flat(repmat(cvec(N),1,nt));
-			t  = flat(repmat(rvec(t),nn,1));
+			nn     = length(N);
+			nt     = length(t);
+			NN     = flat(repmat(cvec(N),1,nt));
+			t      = flat(repmat(rvec(t),nn,1));
 			val_tn = obj.grid_tn.interp(fieldname,[t,NN]);
 			val_tn = reshape(val_tn,nn,nt);
 			val_tn = obj.extrapolate_n(N,val_tn);

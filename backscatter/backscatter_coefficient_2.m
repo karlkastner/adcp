@@ -14,7 +14,7 @@
 %
 % ks is also known as backscatter sensitivity
 function [ks2, fbs, chi, D1] = backscatter_coefficient_2(d_mm,f,varargin)
-	D    = 1e-3*d_mm;
+	d_m = 1e-3*d_mm;
 	if (~issym(d_mm))
 		rhos = Constant.density.quartz;
 	else
@@ -27,6 +27,6 @@ function [ks2, fbs, chi, D1] = backscatter_coefficient_2(d_mm,f,varargin)
 	[fbs,chi] = backscatter_form_function(d_mm,f,varargin{:});
 	% thorne 2008, 1
 	% note that thorne-2014 has 3/(16 pi) in the system constant
-	ks2 = 3/(16*pi)*fbs.^2./((D/2)*rhos);
+	ks2 = 3/(16*pi)*fbs.^2./((d_m/2)*rhos);
 end
 
