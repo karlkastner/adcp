@@ -103,15 +103,17 @@ classdef ADCP_Transect < handle
 
 		% width of the domain
 		function [dwidth, obj] = dwidth(obj)
-			[dir, dwidth] = obj.dir;
+			[dir, dwidth] = obj.dir();
 		end % dwidth
 
 		function [dir, dwidth, obj] = dir(obj)
-			dir    = [diff(obj.xlim); diff(obj.ylim)];
+			dir = [diff(vertcat(obj.xlim)');
+			       diff(vertcat(obj.ylim)')];
 			% normalize
-			dwidth = norm(dir);
-			dir    = dir/dwidth;
+			dwidth = hypot(dir(1,:),dir(2,:));
+			dir    = dir./dwidth;
 		end % dir
+
 		function nlim = nlim(obj)
 			nlim = 0.5*obj.dwidth*[-1,1];
 		end

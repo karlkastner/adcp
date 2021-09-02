@@ -4,8 +4,15 @@
 %% project coordinates onto a single cross section and assign them nz-coordinates at a single cross section
 %% TODO this should be part of transect
 %
+% function [obj] = xy2nts(obj,cdx,centre,dir,dwidth,T_max)
 function [obj] = xy2nts(obj,cdx,centre,dir,dwidth,T_max)
 	flag = false;
+	if (nargin()<5)
+		dwidth = inf;
+	end
+	if (nargin()<5)
+		T_max = inf;
+	end
 
 	% average coordinate of all beams
 	[obj.N(:,cdx), obj.T(:,cdx)]  = xy2nt(obj.X, obj.Y, centre, dir, flag);

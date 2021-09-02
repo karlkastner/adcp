@@ -16,7 +16,7 @@ breaklines=true
 \setlength{\cftsubsecnumwidth}{3.5em}
 
 \title{Manual for Package:
-adcp\protect\\Revision 1:3M
+adcp\protect\\Revision 4M
 }
 \author{Karl K\"astner}
 %\date{}
@@ -811,185 +811,6 @@ ${}$
  stream pro acoutic current doppler profiler
 
 \end{lstlisting}
-\section{backscatter/@Backscatter}
-\subsection{Backscatter}
-${}$
-\begin{lstlisting}
- acoustic backscatter processing
-
-\end{lstlisting}
-\subsection{backscatter2ssc}
-${}$
-\begin{lstlisting}
- convert backscatter to suspended sediment concentration
- c.f lee hanes / sassi, with linear relation for reference concentration
-
-\end{lstlisting}
-\subsection{backscatter2ssc\_implicit}
-${}$
-\begin{lstlisting}
- convert backscatter to suspended sediment concentration
-
- this is the methog called "implicit" by hanes, though it is here still
- implemented in an explicit way, as "explicit/imlicit" in hanes only
- mean euler forward or trapezoidal integration
-
-\end{lstlisting}
-\subsection{backscatter2ssc\_implicit\_sample}
-${}$
-\begin{lstlisting}
- convert backscatter to suspended sediment concentration, implicit method
-
-\end{lstlisting}
-\subsection{backscatter2ssc\_sample}
-${}$
-\begin{lstlisting}
- convert backscatter 2 suspended sediment concentration
-
-\end{lstlisting}
-\subsection{backscatter2ssc\_sassi}
-${}$
-\begin{lstlisting}
- convert backscatter to suspended sediment concentration
- c.f. sassi
-
-\end{lstlisting}
-\subsection{backscatter2ssc\_sassi\_sample}
-${}$
-\begin{lstlisting}
- convert backscatter to suspended sediment concentration
- c.f. sassi
-
-\end{lstlisting}
-\subsection{fit}
-${}$
-\begin{lstlisting}
- fit backscatter coefficients
-
- function [res, leverage, w, obj] = fit(obj,ssc0,R0,R,bs,last,param0)
-
- ssc0		- ns x 1, reference concentration
- R0            - ns x 1, distance to sample along beam
- bs            - ns x nbin, backscatter profile per sample
- R             - ns x nbin, distance to bin from transducer along beam
- last          - last : index last valid bin
- param0        - initial value for parameters
-
-\end{lstlisting}
-\subsection{regmat}
-${}$
-\begin{lstlisting}
- regression matrix
-
-\end{lstlisting}
-\section{backscatter}
-\subsection{attenuation\_coefficient}
-${}$
-\begin{lstlisting}
-
- accoustic attenuation coefficient of suspended particles
-
- hanes 2012
-
- [d_mm] = mm
- [f]    = Hz = 1/s
- [as]   = 1/m (neper)
- for db : chi_db  = 8.7 chi_neper
- [M]    = kg/m^3 = mg/l
- 
- for normalization : chis = as(M=2650)
- 
- function [as,asnu,ass,X,chi] = attenuation_coefficient(d_mm,f,M,mode)
-
-
-\end{lstlisting}
-\subsection{backscatter\_coefficient}
-${}$
-\begin{lstlisting}
- analytic determination of the backscatter coefficient
-
-\end{lstlisting}
-\subsection{backscatter\_coefficient\_2}
-${}$
-\begin{lstlisting}
- analytic basckatter coefficient
- thorne 2002
- thorne 2012
-
-\end{lstlisting}
-\subsection{backscatter\_form\_function}
-${}$
-\begin{lstlisting}
- acoustic backscatter form function
-
-\end{lstlisting}
-\subsection{backscatter\_to\_concentration}
-${}$
-\begin{lstlisting}
- convert acoustic backscatter to suspended sediment mass concentration
- backscatter S has to be corrected for attenuation
-
-\end{lstlisting}
-\subsection{backscatter\_to\_concentration2}
-${}$
-\begin{lstlisting}
- convert acoustic backscatter to sediment concentration
-
-\end{lstlisting}
-\subsection{derive\_attenuation\_coefficient}
-${}$
-\begin{lstlisting}
-
-\end{lstlisting}
-\subsection{normalized\_particle\_radius}
-${}$
-\begin{lstlisting}
- normalized particle radius
-
-\end{lstlisting}
-\subsection{scattering\_cross\_section}
-${}$
-\begin{lstlisting}
-
-\end{lstlisting}
-\subsection{scattering\_cross\_section\_general}
-${}$
-\begin{lstlisting}
-
- acoustic cross sectin ? of sediment particles
- Medwin, ch. 7.5.3
- Axially Symmetric Spherical Mode Solutions
-
-\end{lstlisting}
-\subsection{sigma\_geometric}
-${}$
-\begin{lstlisting}
- differential cross section
- geometrical backscattering for spherical bodies
- ka >> 1, large particles or high frequencies
- k : wave number
- a : radius of the particle
-
-\end{lstlisting}
-\subsection{sigma\_rayleigh}
-${}$
-\begin{lstlisting}
- Rayleigh scattering for a sphere (ka << 1)
- small particles or low frequencies
- Medwin 7.5.2 Rayleigh Scatter From a Sphere (ka << 1)
-
-\end{lstlisting}
-\subsection{ssc2backscatter}
-${}$
-\begin{lstlisting}
- convert suspended sediment concentration to backscatter
- function bs = ssc2backscatter(ssc,d_mm,f,varargin)
-
- ssc : mass concentration of sediment [ssc] = g/l = kg/m^3
- d_mm : grain size diameter [d_mm] = mm
- f : frequency [f] = Hz = 1/2
-
-\end{lstlisting}
 \section{cross-section/@ADCP\_Transect}
 \subsection{ADCP\_Transect}
 ${}$
@@ -1095,6 +916,16 @@ ${}$
 ${}$
 \begin{lstlisting}
  plot rounds (consecutiver transects) navigated with the boat
+
+\end{lstlisting}
+\subsection{resample}
+${}$
+\begin{lstlisting}
+
+\end{lstlisting}
+\subsection{xy2nts}
+${}$
+\begin{lstlisting}
 
 \end{lstlisting}
 \section{cross-section/@CrossSection}

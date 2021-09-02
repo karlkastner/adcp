@@ -6,12 +6,16 @@
 %% the other before returning to the original cross section,
 %% thus the boat does not turn at the other bank to return across the same section
 %% and always navigates the cross section in the same direction
+%  function [obj] = detect_crossings_circling(obj,adcp)
 function [obj] = detect_crossings_circling(obj,adcp)
+	for odx=1:length(obj)
+
 	%,N,T,tid)
-	cdx = obj.tdx;
+	cdx = obj(odx).tdx;
 
 	% fetch
 	tid  = adcp.ens.tid(:,cdx);
+	tid  = logical(tid);
 	N    = adcp.N(:,cdx);
 	T    = adcp.T(:,cdx);
 	%adcp.N(:,cdx),adcp.T(:,obj.cdx),adcp.ens.tid(:,cdx));
@@ -35,7 +39,7 @@ end
 	state = 0;
 	C     = 0;
 	% TODO, no magic number
-	nhyst = 0.1*obj.dwidth;
+	nhyst = 0.1*obj(odx).dwidth;
 	for idx=1:length(N)
 		switch (state)
 			case {0} % waiting for transect
@@ -153,8 +157,9 @@ end
 	%last = min(last,length(N));
 
 	% write back
-	obj.first = first;
-	obj.last  = last;
+	obj(odx).first = first;
+	obj(odx).last  = last;
+	end % for odx
 %	obj.n     = length(first);
 %	state    = 0;
 %	transect = [];

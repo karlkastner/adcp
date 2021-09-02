@@ -22,6 +22,10 @@ function obj = integrate_discharge(obj,adcp)
 
 	% fetch
 	time      = Constant.SECONDS_PER_DAY*adcp.time;
+	if (isempty(adcp.ens.velocity))
+		adcp.depth_average_velocity();
+	end	
+
 	UV        = adcp.ens.velocity.earth(:,1:2);
 	UVb       = adcp.btvel.earth(:,1:2);
 	H         = adcp.ens.H;
